@@ -3,7 +3,7 @@ import { selectFilteredContacts } from '../../redux/contactsSlice';
 import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 
-export default function ContactList({ onDeleteContact }) {
+export default function ContactList() {
   const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
@@ -14,7 +14,6 @@ export default function ContactList({ onDeleteContact }) {
           id={contact.id}
           name={contact.name}
           number={contact.number}
-          onDeleteContact={onDeleteContact}
         />
       ))}
     </ul>

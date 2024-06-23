@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchContacts,
   addContact as addContactOperation,
-  deleteContact as deleteContactOperation,
 } from '../../redux/contactsOps';
 import {
   selectFilteredContacts,
@@ -31,10 +30,6 @@ export default function App() {
     dispatch(addContactOperation({ name, number }));
   };
 
-  const handleDeleteContact = contactId => {
-    dispatch(deleteContactOperation(contactId));
-  };
-
   const handleFilterChange = e => {
     dispatch(changeFilter(e.target.value));
   };
@@ -46,10 +41,7 @@ export default function App() {
       <SearchBox value={filter} onChange={handleFilterChange} />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <ContactList
-        onDeleteContact={handleDeleteContact}
-        contacts={filteredContacts}
-      />
+      <ContactList />
     </div>
   );
 }
